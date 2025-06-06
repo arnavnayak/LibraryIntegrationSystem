@@ -1,6 +1,7 @@
 package com.integration.library.librarysystem.libraryintegrationsystem.controller;
 
 import com.integration.library.librarysystem.libraryintegrationsystem.domain.LibraryDomain;
+import com.integration.library.librarysystem.libraryintegrationsystem.model.LibraryBook;
 import com.integration.library.librarysystem.libraryintegrationsystem.utils.LogUtils;
 import com.integration.library.librarysystem.libraryintegrationsystem.model.LibraryBookEntryRequest;
 import lombok.extern.slf4j.Slf4j;
@@ -20,7 +21,7 @@ public class LibraryManagementController {
     LogUtils logUtils;
 
     @GetMapping(value = "/fetchAllBook", produces = "application/json")
-    public ResponseEntity<?> fetchAllBooks(){
+    public ResponseEntity<Iterable<LibraryBook>> fetchAllBooks(){
         logUtils.loggerImpl("fetchAllBooks",null,null);
         return ResponseEntity.ok(libraryDomain.fetchAllBookDomain());
 
@@ -32,7 +33,7 @@ public class LibraryManagementController {
         return ResponseEntity.ok(libraryDomain.makeBookEntryDomain(libraryBookEntryRequest));
     }
 
-    @PutMapping(value = "/bookUpdate/{id}", consumes = "application/json", produces = "application/json")
+    /*@PutMapping(value = "/bookUpdate/{id}", consumes = "application/json", produces = "application/json")
     public ResponseEntity<?> updateBookEntry(@RequestBody LibraryBookEntryRequest libraryBookEntryRequest
             ,@PathVariable("id") String bookId){
         logUtils.loggerImpl("updateBookEntry",libraryBookEntryRequest,bookId);
@@ -49,5 +50,5 @@ public class LibraryManagementController {
     public ResponseEntity<?> deleteBookEntry(@PathVariable("id") String bookId){
         logUtils.loggerImpl("deleteBookEntry",null,bookId);
         return ResponseEntity.ok(libraryDomain.deleteBookByIdDomain(bookId));
-    }
+    }*/
 }

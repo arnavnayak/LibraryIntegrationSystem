@@ -17,7 +17,6 @@ public class LibraryBook {
 
     @Id
     @Column(name="bookId")
-//    @GeneratedValue(strategy=GenerationType.AUTO)
     private String bookId;
 
     @Column(name="bookNameAndAuthorName")
